@@ -11,7 +11,7 @@ function App() {
 	const [assignTo, setAssignTo] = useState("Vivek");
 	const [file, setFile] = useState(null);
 	const [search, setSearch] = useState("");
-	const [filterData, setFilterData] = useState([]);
+	const [filterData, setFilterData] = useState({});
 	const [loading, setLoading] = useState(false);
 
 	// Handle Change function //
@@ -25,8 +25,7 @@ function App() {
 			...tasks,
 			{
 				id: Date.now(),
-        content: inputValue,
-        lowerCase: inputValue.toLowerCase(),
+				content: inputValue,
 				status: "start",
 				assignee: assignTo,
 				attachment: file,
@@ -79,16 +78,16 @@ function App() {
 
 	// Handle Search Function //
 
-	const handleSearch = (search) => {
+	const handleSearch = () => {
 		
-		var searchData = tasks.filter(
-			(el) => el.lowerCase == search.toLowerCase()
-		);
-      console.log(searchData)
-		searchData && setFilterData([...filterData,searchData]);
-		
-  };
-  
+		console.log(search);
+
+		var searchData = tasks.filter((el) => el.content == search);
+		console.log(searchData);
+
+		searchData && setFilterData(searchData);
+		console.log(filterData, "filterData");
+	};
 
 	return (
 		<>
@@ -125,12 +124,11 @@ function App() {
 				</div>
 				<div className="navbarSearch">
 					<span>Search </span>
-          <input
-            type="search"
+					<input
 						placeholder="Search here"
-						onChange={(e) => handleSearch(e.target.value)}
+						onChange={(e) => setSearch(e.target.value)}
 					/>
-					
+					<button onClick={handleSearch}>Search</button>
 				</div>
 			</div>
 
