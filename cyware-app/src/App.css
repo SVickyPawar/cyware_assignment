@@ -1,0 +1,90 @@
+.App {
+  text-align: center;
+  display: flex;
+  font-family: sans-serif;
+  margin-top: 15px;
+}
+
+.task-box>div {
+  width: 300px;
+  max-height: 500px;
+  margin-left: 10px;
+  border: 5px solid teal;
+}
+
+.task-box>div:nth-child(1) {
+  background-color: rgb(241, 213, 161);
+}
+
+.task-box>div:nth-child(2) {
+  background-color: rgb(232, 232, 158);
+}
+
+.task-box>div:nth-child(3) {
+  background-color: rgb(184, 247, 184);
+}
+
+.singleBox {
+  width: 100%;
+  height: 30px;
+  border: 1px solid red;
+
+}
+
+.header-task {
+  display: flex;
+  width: 70%;
+  /* height: 32px; */
+  padding: 10px;
+  /* border: 1px solid tomato; */
+  align-items: center;
+  background-color: lightblue;
+}
+
+.header-task>label {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.navbar {
+  display: flex;
+
+}
+
+.task-box {
+  width: 70%;
+  display: flex;
+  padding-left: 10px;
+
+
+}
+
+.search_Box {
+  margin-left: 10px;
+  width: 25%;
+  height: 500px;
+  border: 5px solid gray;
+  margin-left: 25px;
+}
+
+.navbarSearch {
+  margin-left: 10px;
+  width: 25%;
+  padding: 10px;
+  background-color: aquamarine;
+  align-items: center;
+  text-align: center;
+}
+
+.navbarSearch>input {
+  margin-top: 5px;
+}
+
+.header-task>button {
+  padding: 1px 30px;
+  background-color: blue;
+  color: whitesmoke;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+}
