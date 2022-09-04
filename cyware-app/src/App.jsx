@@ -71,10 +71,14 @@ function App() {
 		count = 0;
 	};
 
+  // Attachment Function //
+
 	const handleAttachment = (e) => {
 		setFile(e.target.files[0]);
 		console.log(file);
 	};
+
+  // Handle Search Function //
 
 	const handleSearch = () => {
 		// let interval=setInterval(() => {
