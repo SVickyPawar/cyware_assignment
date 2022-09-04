@@ -4,30 +4,29 @@ import React, { useState } from "react";
 import SingleTask from "./components/SingleTask";
 
 function App() {
-
-  ///// States  ////
+	///// States  ////
 	var taskData = JSON.parse(localStorage.getItem("taskData"));
 	const [tasks, setTasks] = useState(taskData || []);
 	const [inputValue, setInputValue] = useState("");
 	const [assignTo, setAssignTo] = useState("Vivek");
 	const [file, setFile] = useState(null);
 	const [search, setSearch] = useState("");
-	const [filterData, setFilterData] = useState({});
+	const [filterData, setFilterData] = useState([]);
 	const [loading, setLoading] = useState(false);
 
-
-  // Handle Change function //
+	// Handle Change function //
 	const handleChange = (e) => {
 		setInputValue(e.target.value);
-  };
-  
-  // Handle Submit Function //
+	};
+
+	// Handle Submit Function //
 	const handleSubmit = (inputValue, assignTo, file) => {
 		setTasks([
 			...tasks,
 			{
 				id: Date.now(),
-				content: inputValue,
+        content: inputValue,
+        lowerCase: inputValue.toLowerCase(),
 				status: "start",
 				assignee: assignTo,
 				attachment: file,
@@ -40,13 +39,13 @@ function App() {
 		localStorage.setItem("taskData", JSON.stringify(tasks));
 	};
 
-  // DragOver //
+	// DragOver //
 	const dragOver = (e) => {
 		console.log("drag over");
 		e.preventDefault();
-  };
-  
-  // Drag Drop Function //
+	};
+
+	// Drag Drop Function //
 	var count = 0;
 	const dragDrop = (e, newStatus, color) => {
 		count++;
@@ -71,29 +70,25 @@ function App() {
 		count = 0;
 	};
 
-  // Attachment Function //
+	// Attachment Function //
 
 	const handleAttachment = (e) => {
 		setFile(e.target.files[0]);
 		console.log(file);
 	};
 
-  // Handle Search Function //
+	// Handle Search Function //
 
-	const handleSearch = () => {
-		// let interval=setInterval(() => {
-		//   setLoading(true);
-		// }, 500)
-
-		// setLoading(false)
-		console.log(search);
-
-		var searchData = tasks.filter((el) => el.content == search);
-		console.log(searchData);
-
-		searchData && setFilterData(searchData);
-		console.log(filterData, "filterData");
-	};
+	const handleSearch = (search) => {
+		
+		var searchData = tasks.filter(
+			(el) => el.lowerCase == search.toLowerCase()
+		);
+      console.log(searchData)
+		searchData && setFilterData([...filterData,searchData]);
+		
+  };
+  
 
 	return (
 		<>
@@ -130,11 +125,12 @@ function App() {
 				</div>
 				<div className="navbarSearch">
 					<span>Search </span>
-					<input
+          <input
+            type="search"
 						placeholder="Search here"
-						onChange={(e) => setSearch(e.target.value)}
+						onChange={(e) => handleSearch(e.target.value)}
 					/>
-					<button onClick={handleSearch}>Search</button>
+					
 				</div>
 			</div>
 
