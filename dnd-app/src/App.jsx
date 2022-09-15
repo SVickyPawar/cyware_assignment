@@ -145,7 +145,10 @@ function App() {
 						</span>
 						{tasks.length > 0 &&
 							tasks.map((el) => (
-								<div style={{ backgroundColor: el.bgColor }} key={el.id}>
+								<div
+									style={{ backgroundColor: el.bgColor, borderRadius: "15px" }}
+									key={el.id}
+								>
 									{el.status == "start" && <SingleTask task={el} />}
 								</div>
 							))}
@@ -161,7 +164,10 @@ function App() {
 						</span>
 						{tasks &&
 							tasks.map((el) => (
-								<div style={{ backgroundColor: el.bgColor }} key={el.id}>
+								<div
+									style={{ backgroundColor: el.bgColor, borderRadius: "15px" }}
+									key={el.id}
+								>
 									{el.status == "wip" && <SingleTask task={el} />}
 								</div>
 							))}
@@ -177,7 +183,10 @@ function App() {
 						</span>
 						{tasks &&
 							tasks.map((el) => (
-								<div style={{ backgroundColor: el.bgColor }} key={el.id}>
+								<div
+									style={{ backgroundColor: el.bgColor, borderRadius: "15px" }}
+									key={el.id}
+								>
 									{el.status == "done" && <SingleTask task={el} />}
 								</div>
 							))}
